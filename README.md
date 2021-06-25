@@ -96,6 +96,7 @@ Opcional
 Queremos saber el precio medio de alquiler de airbnb en España.
 
 ```javascript
+db.listingsAndReviews.aggregate(
 [{$match: {
 "address.country": "Spain"
 }}, {$group: {
@@ -103,21 +104,23 @@ _id: "$address.country",
 media: {
 $avg: "$price"
 }
-}}]
+}}])
 ```
 ¿Y si quisieramos hacer como el anterior, pero sacarlo por paises?
 
 ```javascript
+db.listingsAndReviews.aggregate(
 [{$group: {
 _id: "$address.country",
 media: {
 $avg: "$price"
 }
-}}]
+}}])
 ```
 Repite los mismos pasos pero agrupando también por numero de habitaciones.
 
 ```javascript
+db.listingsAndReviews.aggregate(
 [{$group: {
 _id: {
 Pais: "$address.country",
@@ -126,7 +129,7 @@ NumeroHabitacionces: "$bedrooms",
 media: {
 $avg: "$price"
 }
-}}]
+}}])
 ```
 ## Desafio
 Queremos mostrar el top 5 de apartamentos más caros en España, y sacar los siguentes campos:

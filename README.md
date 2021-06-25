@@ -10,8 +10,9 @@ Consultas
 Basico
 Saca en una consulta cuantos apartamentos hay en España.
 
+```javascript
 db.listingsAndReviews.find({"address.country": "Spain"})
-
+```
 Lista los 10 primeros:
 
 Sólo muestra: nombre, camas, precio, government_area
